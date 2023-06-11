@@ -31,11 +31,13 @@
 </nav>
 <!--navigation end -->
 <!--Success Message-->
-<!--<div th:if="${session.message}">
+<div th:if=${session.message}>
     <div class="alert alert-success" role="alert" th:text="${session.message}">
     </div>
-    <th:block th:text="${#session.removeAttribute('message')}"></th:block>
-</div>>-->
+ <!--   <th:block th:text="${#session.removeAttribute('message')}"></th:block>-->
+    <th:block th:text="${message}"></th:block>
+
+</div>
 <!---Success Message End-->
 <!--Table start-->
 <div class="container p-5">
@@ -48,33 +50,22 @@
             <th scope="col">Address</th>
             <th scope="col">MobileNo</th>
             <th scope="col">Salary</th>
+            <th scope="col">Action</th>
+
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Mark</td>
-            <td>Otto</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>Mark</td>
-            <td>Otto</td>
+        <tr th:each="e : ${emp}">
+            <th th:text="${e.id}">1</th>
+            <td th:text="${e.name}"></td>
+            <td th:text="${e.email}"></td>
+            <td th:text="${e.address}"></td>
+            <td th:text="${e.mobileNo}"></td>
+            <td th:text="${e.salary}"></td>
+            <td>
+                <a class="btn btn-sm btn-primary">Edit</a>
+                <a class="btn btn-sm btn-danger">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>
