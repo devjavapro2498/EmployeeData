@@ -42,7 +42,7 @@ public class EmpController {
     public String getDetailsParticularEmpId(@PathVariable int id, Model model) {
         EmpEntity emp = empService.getDetailsById(id);
         model.addAttribute("emp", emp);
-        return "redirect:/";
+        return "edit";
     }
 
     @PostMapping("/update")
